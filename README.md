@@ -1,27 +1,27 @@
 # Wedupptest
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.5.
+link : [https://wedupptest.herokuapp.com/](https://wedupptest.herokuapp.com/)
 
-## Development server
+I have created this angular app to apply for an internship at Wedupp. It uses angular front end and Node back end. It will accept input number n and retireve n most frequent words from a remote file which do not belong to a given array.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+### Angular
 
-## Code scaffolding
+Only one component was required. HttpClientModule was used in order to make api calls. Input is binded to a variable which is added to the get request, api will return required array of words.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Required words are shown in a table using interpolation
 
-## Build
+## Node
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+It requires express and node-fetch packages.
+Express is used to create web framework, the api is /weduppapi?n=# (GET) which returns array of n words.
+Node-fetch is used to fetch the file from url, as fetch is not available in nodejs
 
-## Running unit tests
+Counting Frequency: From given input file, first I remove all the special char and generate array of words. 
+Then I create an object with words as properties and occurance as values. After this object is again converted to array and reverse sorted. 
+Then I return n most frequent words.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Test Cases
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+- If user will input n correctly, then app will show n most frequent words.
+- If n is negative, do not show any words.
+- If n exceeds total number of words, show total posible words.
