@@ -4,7 +4,7 @@ const io = require('socket.io')(server);
 const path = require('path');
 const fetch = require('node-fetch');
 const fs = require('fs');
-
+let port = process.env.PORT || 3000;
 const app = express();
 
 app.use('/',express.static(path.join(__dirname, 'dist/wedupptest')));
@@ -78,6 +78,6 @@ const readFile = (async (body)=>{
 	})
 })
 
-app.listen(3000,()=>{
-	console.log("server listening on port: "+3000);
+app.listen(port,()=>{
+	console.log("server listening on port: "+port);
 })
